@@ -15,7 +15,6 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-// Configuração de pastas - frontend está na pasta irmã
 const pastaFrontend = path.join(__dirname, "..", "frontend")
 app.use(express.static(pastaFrontend))
 
@@ -25,7 +24,6 @@ app.get("/", (req, res) => {
 
 app.post("/analisar", async (req, res) => {
   const { code, language } = req.body
-  // .trim() remove espaços invisíveis que causam o erro de "Invalid password"
   const token = process.env.HF_TOKEN?.trim()
 
   if (!token || token === "") {
