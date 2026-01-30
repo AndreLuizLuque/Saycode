@@ -9,7 +9,6 @@ dotenv.config()
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-
 const app = express()
 
 app.use(cors())
@@ -93,6 +92,10 @@ app.post("/analisar", async (req, res) => {
 })
 
 const PORT = process.env.PORT || 3000
+
+app.get("/health", (req, res) => {
+  res.status(200).send("OK")
+})
 
 app.listen(PORT, () => {
   console.log(`SayCode Online em http://localhost:${PORT}`)
